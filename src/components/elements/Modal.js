@@ -8,7 +8,8 @@ const propTypes = {
   show: PropTypes.bool.isRequired,
   closeHidden: PropTypes.bool,
   video: PropTypes.string,
-  videoTag: PropTypes.oneOf(['iframe', 'video'])
+  videoTag: PropTypes.oneOf(['iframe', 'video']),
+  game: PropTypes.string,
 }
 
 const defaultProps = {
@@ -27,22 +28,29 @@ const Modal = ({
   closeHidden,
   video,
   videoTag,
+  game,
+  id,
   ...props
 }) => {
+
+  let _iframeRef = React.createRef()
 
   useEffect(() => {
     document.addEventListener('keydown', keyPress);
     document.addEventListener('click', stopProgagation);
+
+    if(_iframeRef.current) _iframeRef.current.focus()
+
     return () => {
       document.removeEventListener('keydown', keyPress);
       document.removeEventListener('click', stopProgagation);
-    };    
+    };
   });
 
   useEffect(() => {
     handleBodyClass();
-  }, [props.show]); 
-  
+  }, [props.show]);
+
   const handleBodyClass = () => {
     if (document.querySelectorAll('.modal.is-active').length) {
       document.body.classList.add('modal-is-active');
@@ -66,6 +74,48 @@ const Modal = ({
     className
   );
 
+  const _renderContent = function() {
+    if(video) {
+      return <div className="responsive-video">
+        {videoTag === 'iframe' ?
+          <iframe
+            title="video"
+            src={video}
+            frameBorder="0"
+            allowFullScreen
+            ref={_iframeRef}
+          ></iframe> :
+          <video
+            v-else
+            controls
+            src={video}
+          ></video>
+        }
+      </div>
+    } else if(game) {
+      return <iframe
+            title="video"
+            src={game}
+            frameBorder="0"
+            allowFullScreen
+            ref={_iframeRef}
+          ></iframe>
+    } else {
+      return <>
+        {!closeHidden &&
+          <button
+            className="modal-close"
+            aria-label="close"
+            onClick={handleClose}
+          ></button>
+        }
+        <div className="modal-content">
+          {children}
+        </div>
+      </>
+    }
+  }
+
   return (
     <>
       {show &&
@@ -73,37 +123,10 @@ const Modal = ({
           {...props}
           className={classes}
           onClick={handleClose}
+          id={id}
         >
           <div className="modal-inner" onClick={stopProgagation}>
-            {video ?
-              <div className="responsive-video">
-                {videoTag === 'iframe' ?
-                  <iframe
-                    title="video"
-                    src={video}
-                    frameBorder="0"
-                    allowFullScreen
-                  ></iframe> :
-                  <video
-                    v-else
-                    controls
-                    src={video}
-                  ></video>
-                }
-              </div> :
-              <>
-                {!closeHidden &&
-                  <button
-                    className="modal-close"
-                    aria-label="close"
-                    onClick={handleClose}
-                  ></button>
-                }
-                <div className="modal-content">
-                  {children}
-                </div>
-              </>
-            }
+            {_renderContent()}
           </div>
         </div>
       }

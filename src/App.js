@@ -3,6 +3,7 @@ import { useLocation, Switch } from 'react-router-dom';
 import AppRoute from './utils/AppRoute';
 import ScrollReveal from './utils/ScrollReveal';
 import ReactGA from 'react-ga';
+import axios from 'axios';
 
 // Layouts
 import LayoutDefault from './layouts/LayoutDefault';
@@ -29,9 +30,21 @@ const App = () => {
     childRef.current.init();
     trackPage(page);
     // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    let gameAppUrl = 'http://ha-game.herokuapp.com'
+    if(window.location.hostname.indexOf('localhost') >= 0) {
+      gameAppUrl = 'http://localhost:4000'
+    }
+    window.HAGameAppUrl = gameAppUrl
+    axios.get(gameAppUrl + '/gamesmetadata').then((res) => {
+      window.gamesList = res.data.games
+    }).catch((e) => {
+      console.error('failed to get games list', e)
+    })
   }, [location]);
 
   return (
+    <div id="page-wrap">
     <ScrollReveal
       ref={childRef}
       children={() => (
@@ -39,6 +52,7 @@ const App = () => {
           <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
         </Switch>
       )} />
+    </div>
   );
 }
 

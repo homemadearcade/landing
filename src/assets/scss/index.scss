@@ -1,0 +1,24 @@
+.GameModal {
+  .modal-inner {
+    width: 70vw;
+    height: 35vw;
+    max-width: none;
+    max-height: none;
+    iframe {
+      width: 70vw;
+      height: 35vw;
+    }
+  }
+}
+
+#BelowManagerContainer {
+  display: none;
+}
+
+body {
+  font-family: Courier !important;
+}
+
+#root {
+  background-color: black;
+}

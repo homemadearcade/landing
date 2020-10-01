@@ -150,7 +150,7 @@
 			top: 0;
 			left: 0;
 			width: 100%;
-			@include divider-mix($layout);
+			// @include divider-mix($layout);
 		}
 	} @else if ($type == 'after') {
 		position: relative;
