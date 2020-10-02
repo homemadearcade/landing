@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { SectionSplitProps } from '../../utils/SectionProps';
 import SectionHeader from './partials/SectionHeader';
 import Image from '../elements/Image';
+import GameItem from '../elements/GameItem';
 
 const propTypes = {
   ...SectionSplitProps.types
@@ -65,33 +66,7 @@ const FeaturesSplit = ({
       <div className="container">
         <div className={innerClasses}>
           <div className={splitClasses}>
-
-            <div className="split-item">
-              <div className="split-item-content center-content-mobile reveal-from-left" data-reveal-container=".split-item">
-                <div className="text-xxs text-color-primary fw-600 tt-u mb-8">
-                  Spencer Williams
-                  </div>
-                <h3 className="mt-0 mb-12">
-                  Baby Bird
-                  </h3>
-                <p className="m-0">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua — Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  </p>
-              </div>
-              <div className={
-                classNames(
-                  'split-item-image center-content-mobile reveal-from-bottom',
-                  imageFill && 'split-item-image-fill'
-                )}
-                data-reveal-container=".split-item">
-                <Image
-                  src={require('./../../assets/images/homemade-arcade-play.png')}
-                  alt="Features split 01"
-                  width={528}
-                  height={396} />
-              </div>
-            </div>
-
+            <GameItem game={window.gameList.find(({id}) => id==='babybird')}/>
             <div className="split-item">
               <div className="split-item-content center-content-mobile reveal-from-right" data-reveal-container=".split-item">
                 <div className="text-xxs text-color-primary fw-600 tt-u mb-8">
