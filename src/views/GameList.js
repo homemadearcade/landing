@@ -2,6 +2,8 @@ import React from 'react';
 // import sections
 import classNames from 'classnames';
 import GameItem from '../components/elements/GameItem';
+import ButtonGroup from '../components/elements/ButtonGroup';
+import Button from '../components/elements/Button';
 
 const GameList = () => {
 
@@ -36,6 +38,9 @@ const GameList = () => {
         <div className={innerClasses}>
           <div className={splitClasses}>
             {renderGameList()}
+            <Button tag="a" color="primary" wideMobile href={window.HASocialClientUrl}>
+              Join the Arcade
+            </Button>
           </div>
         </div>
       </div>

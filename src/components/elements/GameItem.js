@@ -32,13 +32,13 @@ const GameItem = ({
     <div className="split-item">
         <div className="split-item-content center-content-mobile reveal-from-left" data-reveal-container=".split-item">
           <div className="text-xxs text-color-primary fw-600 tt-u mb-8">
-            Spencer Williams
+            {game.metadata.author}
             </div>
           <h3 className="mt-0 mb-12">
-            Baby Bird
+            {game.metadata.name}
             </h3>
           <p className="m-0">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua — Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            {game.metadata.description}
             </p>
         </div>
         <div className={

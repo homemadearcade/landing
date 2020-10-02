@@ -36,19 +36,7 @@ const App = () => {
   }, [location, gameList]);
 
   useEffect(() => {
-    let gameAppUrl = 'http://ha-game.herokuapp.com'
-    if(window.location.hostname.indexOf('localhost') >= 0) {
-      gameAppUrl = 'http://localhost:4000'
-    }
-    window.HAGameAppUrl = gameAppUrl
-
-    let gameClientUrl = 'http://ha-game.herokuapp.com'
-    if(window.location.hostname.indexOf('localhost') >= 0) {
-      gameClientUrl = 'http://localhost:8080'
-    }
-    window.HAGameClientUrl = gameClientUrl
-
-    axios.get(gameAppUrl + '/gamesmetadata').then((res) => {
+    axios.get(window.HAGameServerUrl + '/gamesmetadata').then((res) => {
       window.gameList = res.data.games
       setGameList(res.data.games)
     }).catch((e) => {
