@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Image from './Image';
+import PlayableImage from './PlayableImage';
 import Modal from './Modal';
 
 const propTypes = {
@@ -51,11 +51,11 @@ const GameItem = ({
             className="PlayGameButton"
             onClick={openModal}
           >
-          <Image
+          <PlayableImage
             src={game.metadata.featuredImage.url}
             alt="Features split 01"
             width={528}
-            height={396} />
+            height={264} />
           </a>
         </div>
         <Modal

@@ -51,11 +51,11 @@ const Image = ({
       img.style.display = 'none';
       img.before(placeholder);
       placeholder.src = placeholderSrc(
-        img.getAttribute('width') || 0,
-        img.getAttribute('height') || 0
+        width || 0,
+        height || 0
       );
-      placeholder.width = img.getAttribute('width');
-      placeholder.height = img.getAttribute('height');
+      placeholder.width = width
+      placeholder.height = height;
       placeholder.style.opacity = '0';
       img.className && placeholder.classList.add(img.className);
       placeholder.remove();
@@ -68,15 +68,25 @@ const Image = ({
   }
 
   return (
-    <img
+    <div
       {...props}
       ref={image}
-      className={className}
-      style={{backgroundImage: 'url("' + src + '")'}}
+      className={"PlayableImage"}
+      style={{width, height, backgroundImage: 'url("' + src + '")', backgroundSize: 'cover'}}
       width={width}
       height={height}
-      alt={alt}
-      onLoad={onLoad} />
+      onLoad={onLoad}>
+        <div class="wrapper PlayableImageContent">
+          <div class="link_wrapper">
+            <a href="#">Play</a>
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.832 268.832">
+                <path d="M265.17 125.577l-80-80c-4.88-4.88-12.796-4.88-17.677 0-4.882 4.882-4.882 12.796 0 17.678l58.66 58.66H12.5c-6.903 0-12.5 5.598-12.5 12.5 0 6.903 5.597 12.5 12.5 12.5h213.654l-58.66 58.662c-4.88 4.882-4.88 12.796 0 17.678 2.44 2.44 5.64 3.66 8.84 3.66s6.398-1.22 8.84-3.66l79.997-80c4.883-4.882 4.883-12.796 0-17.678z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+    </div>
   );
 }
 
