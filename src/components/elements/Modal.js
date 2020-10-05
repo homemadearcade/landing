@@ -34,16 +34,19 @@ const Modal = ({
 }) => {
 
   let _iframeRef = React.createRef()
-
+  let _focusInterval = null;
   useEffect(() => {
     document.addEventListener('keydown', keyPress);
     document.addEventListener('click', stopProgagation);
 
-    if(_iframeRef.current) _iframeRef.current.focus()
-
+    // if(_iframeRef.current) _iframeRef.current.focus()
+    _focusInterval = setInterval(() => {
+      if(_iframeRef.current) _iframeRef.current.focus()
+    }, 100)
     return () => {
       document.removeEventListener('keydown', keyPress);
       document.removeEventListener('click', stopProgagation);
+      clearInterval(_focusInterval)
     };
   });
 
