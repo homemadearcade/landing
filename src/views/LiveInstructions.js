@@ -67,8 +67,9 @@ const GameList = () => {
     </div>
   }
 
+  // go through the ha-prologue experience until the end
  // Use the "experience password" we gave you in the Onboarding Email and click unlock
- 
+
   return (
     <section
       className={outerClasses}
