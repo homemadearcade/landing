@@ -78,7 +78,7 @@ const GameList = () => {
         <div className={innerClasses}>
           <div className={splitClasses}>
             {renderInstructions()}
-            <Button tag="a" color="primary" wideMobile href={window.HAGameClientUrl + '?host=true&hero=singlePlayer&gameId=ha-prologue'}>
+            <Button tag="a" color="primary" wideMobile href={window.HAGameClientUrl + '?host=true&heroSummonType=singlePlayer&gameId=ha-prologue'}>
               Begin
             </Button>
           </div>
