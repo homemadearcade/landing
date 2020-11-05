@@ -56,7 +56,7 @@ const GameList = () => {
         <h5
           className="normal-font m-0 mb-32 reveal-from-bottom"
           >
-          Go to <a className="button-link" target="_blank" href="https://obs.ninja/">{'https://obs.ninja/'}</a> and click {'"Add your camera to obs"'} and copy the url it gives you. Be prepared to give us this url when you meet us on the video chat
+          Go to <a className="button-link" target="_blank" href="https://obs.ninja/">{'https://obs.ninja/'}</a> and click {'"Remote screenshare into OBS"'} and copy the url it gives you. Be prepared to give us this url when you meet us on the video chat
           <br/>
           <br/>
           When your alloted time begins, meet us on the video chat link we sent you in the Onboarding Email
